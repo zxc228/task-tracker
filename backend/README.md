@@ -1,85 +1,93 @@
-# 📦 Backend — Task Tracker
+# Task Tracker API
 
-This is the backend part of the **Task Tracker** project — a REST API for task management using **FastAPI** and **SQLite**.  
-It may later be adapted for PostgreSQL and rewritten in Go.
+Backend for a personal task tracker. Built with FastAPI + SQLite and JWT authentication.
 
----
+## Technology Stack
 
-## 🚀 Stack
-
-- **FastAPI** — framework for asynchronous APIs
-- **SQLite** — lightweight embedded database
-- **SQLAlchemy** — ORM for database interaction
-- **Pydantic** — data validation
-- **Uvicorn** — ASGI server
+- **Python 3.12**
+- **FastAPI**
+- **SQLAlchemy (async)**
+- **SQLite**
+- **JWT Authentication**
+- **curl-friendly REST API**
 
 ---
 
-## 📁 Structure
-
-app/  
-├── main.py              ← Entry point  
-├── db/  
-│   └── database.py      ← SQLite connection  
-├── models/  
-│   └── task.py          ← Task model  
-├── schemas/  
-│   └── task.py          ← Pydantic schema  
-├── routers/  
-│   └── task.py          ← CRUD endpoints  
-└── services/  
-    └── task.py          ← Business logic (optional)  
-
----
-
-## ⚙️ Installation
+## Installation
 
 ```bash
-# Create and activate a virtual environment
-python -m venv venv
-source venv/bin/activate  # or .\venv\Scripts\activate on Windows
-```
-
-# Install dependencies
+git clone https://github.com/yourname/task-tracker.git
+cd task-tracker/backend
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
-
-### 🛠 Environment Variables
-
-Create a `.env` file based on the template:
-
-```bash
-cp .env.example .env
 ```
 
-Fill in the required variables in the `.env` file.
+## Настройки
 
----
-
-## 🧪 Running the Application
-
-To start the development server, run:
-
+Create a .env file in the backend directory
 ```bash
-uvicorn app.main:app --reload
+SECRET_KEY=your_super_secret_key
+ALGORITHM=your_algorithm
+ACCESS_TOKEN_EXPIRE_MINUTES=30
 ```
 
-The API will be available at `http://127.0.0.1:8000`.
-
----
-
-## 🧹 Linting and Formatting
-
-TODO
-
----
-
-## 🧪 Testing
+It is recommended to use `openssl rand -hex 32` to generate the key
 
 
-TODO
+## Running the Server
 
----
+```bash
+cd backend
+python main.py
+```
 
-## 📜 License
+### Documentation will be available at:
+Swagger: http://127.0.0.1:8000/docs
 
-This project is licensed under the MIT License.
+## Project Structure
+```
+backend/
+├── app/
+│   ├── db/
+│   ├── models/
+│   ├── routers/
+│   ├── schemas/
+│   ├── services/
+│   └── main.py
+├── .env
+├── tasks.db
+└── README.md
+```
+
+
+## Authentication
+### Registration:
+```bash
+POST /auth/register
+```
+
+### Login:
+```bash
+POST /auth/login
+```
+Response:
+```json
+{
+  "access_token": "<JWT>",
+  "token_type": "bearer"
+}
+```
+
+```Use Authorization: Bearer <JWT> for all tasks```
+
+## Tasks
+- POST /tasks/ — create
+- GET /tasks/ — get a list (filters: is_completed, priority, due_before)
+= GET /tasks/{id} — get one
+= PUT /tasks/{id} — update
+= DELETE /tasks/{id} — delete
+
+
+## Author
+Ilya Istomin — [telegram](https://t.me/diabobus) | portfolio (in progress)
