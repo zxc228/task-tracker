@@ -1,12 +1,20 @@
-import ProtectedRoute from '@/components/ProtectedRoute'
+// src/app/tasks/page.tsx
+import TaskList from '@/features/tasks/components/TaskList'
+import Link from 'next/link'
 
 export default function TasksPage() {
   return (
-    <ProtectedRoute>
-      <div className="p-6 text-neutral-800">
-        <h1 className="text-2xl font-semibold">Your Tasks</h1>
-        {/* здесь будут задачи */}
+    <section className="max-w-6xl mx-auto px-4 py-8">
+      <div className="flex items-center justify-between mb-6">
+        <h1 className="text-3xl font-bold text-neutral-800">Dashboard</h1>
+        <Link
+          href="/tasks/create"
+          className="bg-neutral-800 text-white px-4 py-2 rounded hover:bg-neutral-700 transition"
+        >
+          + New Task
+        </Link>
       </div>
-    </ProtectedRoute>
+      <TaskList />
+    </section>
   )
 }

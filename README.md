@@ -1,6 +1,6 @@
 # Task Tracker
 
-A minimal, fast, and secure task tracking app built as a pet project by [Ilya Istomin](https://github.com/ilyaistomin).  
+A minimal, fast, and secure task tracking app built as a pet project by [Ilya Istomin](https://github.com/zxc228).  
 This project is designed as a full-stack portfolio piece with **FastAPI** on the backend and **Next.js** on the frontend (in progress).
 
 ---
