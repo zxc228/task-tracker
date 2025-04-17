@@ -23,7 +23,7 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-## Настройки
+## Setup
 
 Create a .env file in the backend directory
 ```bash
