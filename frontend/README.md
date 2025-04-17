@@ -1,6 +1,6 @@
 # Task Tracker Frontend
 
-The official frontend for the **[Task Tracker API](./backend/README.md)**, built with Next.js 14, Tailwind CSS, and modern design principles.
+The official frontend for the **[Task Tracker API](../backend/README.md)**, built with Next.js 14, Tailwind CSS, and modern design principles.
 
 `Fully client-rendered, minimal UI, smooth auth flow with JWT.`
 
@@ -67,7 +67,7 @@ frontend/
 
 ## Backend API
 
-The frontend connects to the **[FastAPI](./backend/README.md)** using token-based auth.
+The frontend connects to the **[FastAPI](../backend/README.md)** using token-based auth.
 
 You’ll need to have the backend running on http://localhost:8000 (or update the API URL in lib/config.ts)
 
