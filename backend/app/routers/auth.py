@@ -16,6 +16,8 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 
 @router.post("/register", response_model=UserRead)
 async def register(user: UserCreate, db: AsyncSession = Depends(get_db)):
+    print('tut')
+    print(user.dict())
     existing = await get_user_by_username(db, user.username)
     if existing:
         raise HTTPException(status_code=400, detail="Username already exists")

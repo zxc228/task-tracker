@@ -1,7 +1,21 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 from app.routers import task, auth 
 from app.db.database import Base, engine
 app = FastAPI(title="Task Tracker API")
+
+
+
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # или ["http://localhost:3000"] для Next.js
+    allow_credentials=True,
+    allow_methods=["*"],  # или ["POST", "GET", "OPTIONS"]
+    allow_headers=["*"],
+)
 
 # Роутер
 app.include_router(task.router)
