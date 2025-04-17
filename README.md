@@ -43,7 +43,7 @@ The frontend using:
 - 🔐 JWT-based auth flow
 
 
-📘 **[Frontend README]**(./frontend/README.md) 
+📘 **[Frontend README](./frontend/README.md)** -setup, features and more.
 
 ---
 
