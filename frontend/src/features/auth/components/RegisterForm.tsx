@@ -4,13 +4,13 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Spinner from '@/components/Spinner'
 import { registerUser } from '@/features/auth/api/register'
-import Alert from '@/components/Alert'
 
+import { toast } from 'react-hot-toast'
 
 export default function RegisterForm() {
   const router = useRouter()
   const [form, setForm] = useState({ username: '', email: '', password: '' })
-  const [error, setError] = useState('')
+  
   const [isLoading, setIsLoading] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,16 +19,16 @@ export default function RegisterForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setError('')
+
     setIsLoading(true)
     try {
       await registerUser(form)
       router.push('/login')
     } catch (err: unknown) {
       if (err instanceof Error) {
-        setError(err.message)
+        toast.error(err.message)
       } else {
-        setError('Something went wrong. Please try again.')
+        toast.error('Something went wrong. Please try again.')
       }
     } finally {
       setIsLoading(false)
@@ -38,7 +38,7 @@ export default function RegisterForm() {
   return (
     <div className="max-w-md mx-auto mt-20 bg-neutral-50 p-6 rounded-xl shadow border border-neutral-200">
       <h2 className="text-2xl font-semibold mb-4 text-neutral-800">Register</h2>
-      {error && <Alert type="error">{error}</Alert>}
+      
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"

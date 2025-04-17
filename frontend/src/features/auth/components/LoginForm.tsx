@@ -4,30 +4,33 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { loginUser } from '@/features/auth/api/login'
 import Spinner from '@/components/Spinner'
-import Alert from '@/components/Alert'
+import toast from 'react-hot-toast'
 
 export default function LoginForm() {
   const router = useRouter()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
+  
   const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setError('')
+    
     setIsLoading(true)
 
     try {
       const token = await loginUser({ username, password })
       localStorage.setItem('token', token)
       window.dispatchEvent(new Event('auth-changed')) 
+      toast.success('Welcome back!')
       router.push('/tasks')
     } catch (err: unknown) {
       if (err instanceof Error) {
-        setError(err.message)
+        
+        toast.error(err.message)
       } else {
-        setError('An unknown error occurred.')
+        toast.error('An unknown error occurred.')
+      
       }
     } finally {
       setIsLoading(false)
@@ -37,7 +40,7 @@ export default function LoginForm() {
   return (
     <div className="max-w-md mx-auto mt-20 bg-neutral-50 p-6 rounded-xl shadow border border-neutral-200">
       <h2 className="text-2xl font-semibold mb-4 text-neutral-800">Login</h2>
-      {error && <Alert type="error">{error}</Alert>}
+      
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"

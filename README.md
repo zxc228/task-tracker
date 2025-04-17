@@ -35,22 +35,21 @@ The backend includes:
 
 ## 🧾 Frontend
 
-> ⏳ Status: **Planned**
+> ✅ Status: **Done**
 
-The frontend will be built using:
+The frontend using:
 - ⚛️ Next.js (App Router)
 - 💅 Tailwind CSS
 - 🔐 JWT-based auth flow
-- 🌗 Dark/Light UI toggle
-- 📱 Mobile-friendly layout
 
-📘 **Frontend README** — coming soon!
+
+📘 **[Frontend README]**(./frontend/README.md) 
 
 ---
 
 ## 👨‍💻 Author
 
-**Ilya Istomin** — full-stack developer focused on Python, Go, and modern JavaScript.  
+**Ilya Istomin** — full-stack developer focused on Python and modern JavaScript.  
 Currently building pet projects, real-world tools, and portfolio apps.
 
 - GitHub: [@zxc228](https://github.com/zxc228)

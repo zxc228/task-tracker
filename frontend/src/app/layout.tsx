@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import { Toaster } from 'react-hot-toast'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,6 +25,7 @@ export default function RootLayout({
           <Navbar />
           <main className="flex-grow px-6 py-10 max-w-4xl mx-auto w-full">
             {children}
+            <Toaster position="top-center" />
           </main>
           <Footer />
         </div>

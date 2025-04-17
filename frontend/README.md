@@ -1,36 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Task Tracker Frontend
 
-## Getting Started
+The official frontend for the **[Task Tracker API](./backend/README.md)**, built with Next.js 14, Tailwind CSS, and modern design principles.
 
-First, run the development server:
+`Fully client-rendered, minimal UI, smooth auth flow with JWT.`
+
+---
+
+## Tech Stack
+- Next.js 14 (App Router, TypeScript)
+- Tailwind CSS (with custom design system)
+- JWT Authentication
+- React Hooks + Context
+- React Hot Toast for notifications
+- REST API connection to FastAPI backend
+
+---
+## Installation
+```bash
+git clone https://github.com/yourname/task-tracker.git
+cd task-tracker/frontend
+npm install
+```
+
+You can also use pnpm or yarn if preferred.
+
+---
+
+## Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+frontend/
+├── public/               # Static assets
+├── src/
+│   ├── app/              # Next.js routing, layout, pages
+│   ├── components/       # Shared UI components (Navbar, Spinner, etc.)
+│   ├── features/         # Feature-specific logic (auth, tasks)
+│   │   ├── auth/         # Auth forms, API functions
+│   │   └── tasks/        # Tasks list, modals, CRUD logic
+│   ├── hooks/            # Custom React hooks (e.g., useAuth)
+│   ├── lib/              # Helpers, utils, config
+│   ├── styles/           # Global or component styles
+│   └── types/            # Shared TypeScript types
+├── tailwind.config.ts
+├── tsconfig.json
+└── README.md             # You are here
+```
+---
+## Features
+- Login & registration with JWT
+- Auth-aware navbar (Sign out / Login / Register)
+- Task CRUD: create, read, update, delete
+- Modal-based task editing
+- Priority labels & status badges
+- Toast-based notifications
+- Responsive, minimal layout
+- Type-safe API integration
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+## Backend API
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The frontend connects to the **[FastAPI](./backend/README.md)** using token-based auth.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+You’ll need to have the backend running on http://localhost:8000 (or update the API URL in lib/config.ts)
 
-## Deploy on Vercel
+## Author
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Ilya Istomin
+Full-stack developer focused on building fast, modern, minimal web tools.
+- GitHub: @zxc228
+- Telegram: @diabobus
+- Portfolio: coming soon…
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## License
+
+MIT — use it, modify it, deploy it.
+Just give credit if you do 

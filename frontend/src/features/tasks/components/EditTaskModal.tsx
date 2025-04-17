@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Task } from '@/types/task'
 import { updateTask } from '@/features/tasks/api/updateTask'
+import { toast } from 'react-hot-toast'
 import Spinner from '@/components/Spinner'
 
 interface EditTaskModalProps {
@@ -18,11 +19,11 @@ export default function EditTaskModal({ task, onClose, onSave }: EditTaskModalPr
   const [priority, setPriority] = useState(task.priority)
   const [isCompleted, setIsCompleted] = useState(task.is_completed)
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  
 
   const handleSave = async () => {
     setLoading(true)
-    setError('')
+   
   
     try {
       const updated = await updateTask(task.id, {
@@ -32,12 +33,12 @@ export default function EditTaskModal({ task, onClose, onSave }: EditTaskModalPr
         is_completed: isCompleted,
         priority,
       })
-  
-      onSave(updated) // 👈 передаём новую версию задачи
+      toast.success('Task updated successfully')
+      onSave(updated)
       onClose()
     } catch (err) {
       console.error('Error updating task:', err)
-      setError('Failed to update task')
+      toast.error('Failed to update task')
     } finally {
       setLoading(false)
     }
@@ -48,7 +49,7 @@ export default function EditTaskModal({ task, onClose, onSave }: EditTaskModalPr
       <div className="bg-white p-6 rounded-lg shadow w-full max-w-md">
         <h2 className="text-xl font-semibold mb-4 text-neutral-800">Edit Task</h2>
 
-        {error && <p className="text-red-600 text-sm mb-2">{error}</p>}
+        
 
         <input
           type="text"

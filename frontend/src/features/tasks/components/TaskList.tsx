@@ -6,11 +6,12 @@ import { Task } from '@/types/task'
 import EditTaskModal from '@/features/tasks/components/EditTaskModal' 
 import PriorityBadge from '@/features/tasks/components/PriorityBadge'
 import { deleteTask } from '@/features/tasks/api/deleteTask'
+import { toast } from 'react-hot-toast'
 
 export default function TaskList() {
   const [tasks, setTasks] = useState<Task[]>([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState('')
+  
   const [selectedTask, setSelectedTask] = useState<Task | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -23,7 +24,7 @@ export default function TaskList() {
         setTasks(data)
       } catch (err) {
         console.error('Error fetching tasks:', err)
-        setError('Failed to fetch tasks.')
+        toast.error('Failed to fetch tasks.')
       } finally {
         setLoading(false)
       }
@@ -43,9 +44,10 @@ export default function TaskList() {
     try {
       await deleteTask(task.id)
       setTasks((prev) => prev.filter((t) => t.id !== task.id))
+      toast.success('Task deleted successfully!')
     } catch (err) {
       console.error('Error deleting task:', err)
-      setError('Failed to delete task.')
+      toast.error('Failed to delete task.')
     }
   }
 
@@ -54,7 +56,7 @@ export default function TaskList() {
       <h1 className="text-2xl font-semibold text-neutral-800 mb-6">Your Tasks</h1>
 
       {loading && <p className="text-neutral-500">Loading...</p>}
-      {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
+      
 
       <ul className="space-y-4">
         {tasks.map((task) => (
@@ -112,6 +114,7 @@ export default function TaskList() {
               prev.map((t) => (t.id === updatedTask.id ? updatedTask : t))
             )
             setIsModalOpen(false)
+            toast.success('Task updated successfully!')
           }}
         />
       )}
