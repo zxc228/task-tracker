@@ -37,16 +37,38 @@ The backend includes:
 
 > ✅ Status: **Done**
 
-The frontend using:
+The frontend is built with:
 - ⚛️ Next.js (App Router)
 - 💅 Tailwind CSS
 - 🔐 JWT-based auth flow
 
-
-📘 **[Frontend README](./frontend/README.md)** -setup, features and more.
+📘 **[Frontend README](./frontend/README.md)** — setup, features and more.
 
 ---
+## 🐳 Running with Docker
 
+You can run both the **backend** and **frontend** using Docker and Docker Compose.
+### 📦 Requirements
+- [Docker](https://www.docker.com/)
+- [Docker compose](https://docs.docker.com/compose/)
+
+### 🚀 Quick Start
+```bash
+git clone https://github.com/zxc228/task-tracker.git
+cd task-tracker
+docker-compose up --build
+```
+
+- Backend: http://localhost:8000
+- Frontend: http://localhost:3000
+
+🔐 Make sure you have a valid .env file inside the backend/ folder.
+
+### 🛑 Stopping the Containers
+```bash
+docker-compose down
+```
+---
 ## 👨‍💻 Author
 
 **Ilya Istomin** — full-stack developer focused on Python and modern JavaScript.  
