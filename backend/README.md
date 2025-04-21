@@ -34,6 +34,8 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 
 It is recommended to use `openssl rand -hex 32` to generate the key
 
+And it's recommended to use HS256
+
 
 ## Running the Server
 
