@@ -16,7 +16,7 @@ Backend for a personal task tracker. Built with FastAPI + SQLite and JWT authent
 ## Installation
 
 ```bash
-git clone https://github.com/yourname/task-tracker.git
+git clone https://github.com/zxc228/task-tracker.git
 cd task-tracker/backend
 python3 -m venv .venv
 source .venv/bin/activate
